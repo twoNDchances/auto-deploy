@@ -1,0 +1,9 @@
+touch creds.txt comms.txt sitepath.txt
+cat <<EOF >> creds.txt
+USERNAME=root
+HOSTNAME=
+PORT=
+PASSWORD=
+SITE_FILE=sitepath.txt
+COMMANDS=comms.txt
+EOF
