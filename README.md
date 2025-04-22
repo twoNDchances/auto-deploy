@@ -42,10 +42,29 @@ Mặc định, các đường dẫn trong `sitepath.txt` đều sẽ được `c
 ```bash
   cd $site && echo 123
 ```
+
+Lưu ý: Trong tệp cd
 # Usage
 Sau khi đã hoàn thành các bước thiết lập trên:
 ```bash
   go run .
+```
+
+LƯU Ý: Không để các dòng rỗng
+```bash
+  /home/user
+  /tmp
+  <empty line>
+  /etc/passwd
+```
+
+```bash
+  ls -la
+  cat /etc/passwd
+  <empty line>
+  touch test.txt && cat test.txt
+  <empty line>
+  <empty line>
 ```
 ## Feedback
 

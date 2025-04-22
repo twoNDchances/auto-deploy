@@ -57,7 +57,7 @@ func (ad *AutoDeploy) Execute(client *ssh.Client, wg *sync.WaitGroup, site strin
 			return
 		}
 		filterCmd := strings.ReplaceAll(command, "$site", site)
-		output, err := session.CombinedOutput(filterCmd)
+		output, err := session.CombinedOutput(fmt.Sprintf("cd %s && %s", site, filterCmd))
 		if err != nil {
 			log.Printf("Command fail at %s: %s", site, err)
 			finalReport = append(finalReport, map[string]string{
