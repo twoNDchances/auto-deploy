@@ -50,8 +50,9 @@ func (ad *AutoDeploy) Execute(client *ssh.Client, wg *sync.WaitGroup, site strin
 		if err != nil {
 			log.Printf("Fail to create session for %s: %s", site, err)
 			finalReport = append(finalReport, map[string]string{
-				setColor(site, "blue"): setColor("failed", "red"),
-			})
+				"site": setColor(site, "red"),
+				"message": setColor("Fail to create session", "purple"),
+ 			})
 			fail++
 			return
 		}
@@ -60,8 +61,9 @@ func (ad *AutoDeploy) Execute(client *ssh.Client, wg *sync.WaitGroup, site strin
 		if err != nil {
 			log.Printf("Command fail at %s: %s", site, err)
 			finalReport = append(finalReport, map[string]string{
-				setColor(site, "blue"): setColor("failed", "red"),
-			})
+				"site": setColor(site, "red"),
+				"message": setColor("Command fail: " + filterCmd, "purple"),
+ 			})
 			fail++
 			return
 		}

@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 const (
 	red    = "\033[31m"
@@ -31,8 +33,6 @@ func printReport() {
 	fmt.Println(setColor("All done!", "green"))
 	fmt.Println("Reports:", setColor(fmt.Sprint(success), "green"), "/", setColor(fmt.Sprint(fail), "red"))
 	for _, report := range finalReport {
-		for key, value := range report {
-			fmt.Printf("%s: %s\n", key, value)
-		}
+		fmt.Printf("%s: %s\n", report["site"], report["message"])
 	}
 }
