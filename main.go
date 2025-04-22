@@ -40,6 +40,9 @@ func main() {
 	}
 	var wg sync.WaitGroup
 	for _, site := range *sites {
+		if len(site) == 0 {
+			continue
+		}
 		wg.Add(1)
 		go autoDeploy.Execute(client, &wg, site)
 	}

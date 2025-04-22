@@ -46,6 +46,9 @@ func (ad *AutoDeploy) NewClient() (client *ssh.Client, err error) {
 func (ad *AutoDeploy) Execute(client *ssh.Client, wg *sync.WaitGroup, site string) {
 	defer wg.Done()
 	for _, command := range ad.ListCommands {
+		if len(command) == 0 {
+			continue
+		}
 		session, err := client.NewSession()
 		if err != nil {
 			log.Printf("Fail to create session for %s: %s", site, err)
